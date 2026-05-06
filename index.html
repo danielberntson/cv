@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daniel Berntson — CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #fbf8f3;
+    --ink: #1f2230;
+    --muted: #5b5f6b;
+    --rule: #e5dccd;
+    --accent: #b8472a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    background: #efeae0;
+    color: var(--ink);
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  /* PAGE CONTAINER */
+  .page {
+    max-width: 820px;
+    background: var(--bg);
+    margin: 40px auto;
+    padding: 52px 60px 48px;
+    box-shadow: 0 8px 40px rgba(0,0,0,0.08);
+  }
+
+  /* HEADER */
+  .header { padding-bottom: 14px; border-bottom: 2px solid var(--accent); }
+  .name {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 38pt;
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+  }
+  .tagline {
+    margin-top: 8px;
+    font-size: 11pt;
+    font-weight: 500;
+    color: var(--accent);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  .contact { margin-top: 10px; font-size: 9.5pt; color: var(--muted); }
+  .contact span { white-space: nowrap; }
+  .contact .dot { color: var(--rule); margin: 0 8px; }
+
+  /* SECTIONS */
+  section { margin-top: 24px; }
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: 12pt;
+    font-weight: 600;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 10px;
+  }
+  .summary { font-size: 10.5pt; line-height: 1.55; color: var(--ink); }
+
+  /* TWO-COL */
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 36px; }
+  .two-col h2 { margin-bottom: 8px; }
+  ul { list-style: none; }
+  ul.bullets li {
+    position: relative;
+    padding-left: 14px;
+    margin-bottom: 7px;
+    font-size: 10pt;
+  }
+  ul.bullets li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 5px;
+    height: 5px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  ul.bullets li b { font-weight: 600; color: var(--ink); }
+
+  /* EXPERIENCE */
+  .job {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: start;
+    margin-bottom: 16px;
+  }
+  .job-title-row { margin-bottom: 3px; }
+  .job-title { font-family: 'Fraunces', serif; font-size: 11.5pt; font-weight: 600; color: var(--ink); }
+  .job-org { color: var(--muted); font-weight: 400; }
+  .job-dates {
+    font-size: 9.5pt;
+    color: var(--muted);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+  .job-desc { font-size: 10pt; line-height: 1.5; color: var(--ink); }
+
+  /* EDUCATION */
+  .edu-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+    font-size: 10pt;
+  }
+  .edu-row .deg { font-weight: 600; }
+  .edu-row .inst { color: var(--muted); flex: 1; margin-left: 10px; }
+  .edu-row .yr { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+  /* FOOTER */
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 28px;
+    margin-top: 22px;
+  }
+  .footer-grid .label {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .footer-grid .content { font-size: 10pt; color: var(--ink); }
+
+  /* MOBILE */
+  @media (max-width: 640px) {
+    html, body { background: var(--bg); font-size: 11pt; }
+    .page { margin: 0; padding: 32px 24px 48px; box-shadow: none; }
+    .name { font-size: 26pt; }
+    .two-col { grid-template-columns: 1fr; gap: 0; }
+    .two-col > div + div { margin-top: 20px; }
+    .job { grid-template-columns: 1fr; gap: 0; }
+    .job-dates { padding-top: 2px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 14px; }
+    .edu-row { flex-wrap: wrap; gap: 2px 8px; }
+    .edu-row .inst { flex-basis: 100%; margin-left: 0; }
+  }
+
+  /* MID-SIZE: kill shadow when the card would touch the edges */
+  @media (max-width: 860px) and (min-width: 641px) {
+    .page { margin: 0 auto; box-shadow: none; }
+  }
+
+  /* PRINT */
+  @page { size: A4; margin: 0; }
+  @media print {
+    html, body { background: white; width: 210mm; height: 297mm; margin: 0; padding: 0; font-size: 10.5pt; }
+    .page {
+      width: 210mm;
+      height: 297mm;
+      max-width: none;
+      margin: 0;
+      padding: 14mm 16mm 12mm;
+      box-shadow: none;
+      overflow: hidden;
+    }
+    section { margin-top: 14px; }
+    .two-col { grid-template-columns: 1fr 1fr; gap: 28px; }
+    .two-col h2 { margin-bottom: 6px; }
+    ul.bullets li { margin-bottom: 5px; }
+    .job { grid-template-columns: 1fr auto; gap: 24px; margin-bottom: 12px; }
+    .footer-grid { grid-template-columns: 1fr 1.3fr; margin-top: 14px; }
+    .edu-row { padding: 3px 0; flex-wrap: nowrap; }
+    .edu-row .inst { flex-basis: auto; margin-left: 10px; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="header">
+    <div class="name">Daniel Berntson</div>
+    <div class="tagline">Analyst · Researcher · Writer</div>
+    <div class="contact">
+      <span>Uppsala, Sweden</span><span class="dot">·</span>
+      <span>daniel@berntson.io</span><span class="dot">·</span>
+      <span>berntson.io</span><span class="dot">·</span>
+      <span>+46 70-508 35 31</span>
+    </div>
+  </header>
+
+  <section>
+    <h2>Summary</h2>
+    <p class="summary">Philosophy PhD with experience in research and analysis at universities across the United States and Sweden. Trained at Princeton in logic, probability, and reasoning under uncertainty. Comfortable addressing complex, open-ended questions with both qualitative and quantitative methods — equally at home in a graduate seminar or a Python notebook. Currently working on practical questions about AI alignment and evaluation.</p>
+  </section>
+
+  <section class="two-col">
+    <div>
+      <h2>Skills</h2>
+      <ul class="bullets">
+        <li><b>Analytical reasoning &amp; problem solving.</b> Formal logic, probability, structured thinking on hard, open-ended questions.</li>
+        <li><b>Research &amp; writing.</b> Published in peer-reviewed international journals.</li>
+        <li><b>Teaching.</b> Six years of course design and delivery, with strong student reviews.</li>
+        <li><b>Project management.</b> Co-organized three international research workshops, including budget and multi-stakeholder coordination.</li>
+        <li><b>Software &amp; data.</b> Python, SQL; builds data pipelines and tools.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Working Style</h2>
+      <ul class="bullets">
+        <li><b>Highly adaptable.</b> New tools, new questions, new contexts; career across two continents.</li>
+        <li><b>Quick learner.</b> Picks up new tools and ideas fast; learns by building.</li>
+        <li><b>Creative.</b> Generates new approaches to hard problems; draws on ideas from adjacent and unexpected fields.</li>
+        <li><b>Clear communicator.</b> Technical material for non-experts; from students to senior researchers.</li>
+        <li><b>Collaborative.</b> Long-running relationships with advisors, peers, and students.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Experience</h2>
+
+    <div class="job">
+      <div>
+        <div class="job-title-row"><span class="job-title">Postdoctoral Researcher</span> <span class="job-org">— Uppsala University</span></div>
+        <p class="job-desc">Independent research position. Produced peer-reviewed publications, taught graduate and undergraduate courses, co-organized three international workshops, supervised graduate and undergraduate theses.</p>
+      </div>
+      <div class="job-dates">2023 – 2026</div>
+    </div>
+
+    <div class="job">
+      <div>
+        <div class="job-title-row"><span class="job-title">Postdoctoral Researcher</span> <span class="job-org">— Rutgers University</span></div>
+        <p class="job-desc">Fellowship working at the intersection of philosophy of physics, metaphysics, and formal logic; designed and taught cross-disciplinary undergraduate courses.</p>
+      </div>
+      <div class="job-dates">2020 – 2022</div>
+    </div>
+
+    <div class="job">
+      <div>
+        <div class="job-title-row"><span class="job-title">Lecturer</span> <span class="job-org">— Princeton University</span></div>
+        <p class="job-desc">Taught undergraduate courses in moral philosophy and introductory logic.</p>
+      </div>
+      <div class="job-dates">2019 – 2020</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Education</h2>
+    <div class="edu-row"><span class="deg">PhD, Philosophy</span><span class="inst">Princeton University</span><span class="yr">2019</span></div>
+    <div class="edu-row"><span class="deg">MA, Philosophy</span><span class="inst">Brown University</span><span class="yr">2010</span></div>
+    <div class="edu-row"><span class="deg">BA, Philosophy &amp; English Literature</span><span class="inst">Northwestern College</span><span class="yr">2006</span></div>
+  </section>
+
+  <div class="footer-grid">
+    <div>
+      <div class="label">Languages</div>
+      <div class="content">English (native) · Swedish (intermediate)</div>
+    </div>
+    <div>
+      <div class="label">Tools</div>
+      <div class="content">Python · SQL · LaTeX · Git</div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
