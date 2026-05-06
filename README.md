@@ -7,7 +7,7 @@ tags:
   - cv
   - career
   - non-academic
-entry: index.html
+entry: cv.md
 material_kind: cv
 github_sync: yes
 github_repo: danielberntson/cv
@@ -20,19 +20,27 @@ One-page general-audience CV for non-academic job applications.
 
 ## Files
 
-- `index.html` — responsive web version; GitHub Pages source
-- `mockup-1.html` — A4 print layout; source for PDF generation
-- `mockup-1.pdf` — rendered A4 PDF
-- `draft-1.md` — plain-text content draft
+- `cv.md` — **canonical content** (plain text; this is what you edit)
+- `index.html` — styled HTML; serves both the web version and PDF source
+- `cv.pdf` — rendered A4 PDF
+
+## Workflow
+
+To update the CV: **edit `cv.md`**, then ask an agent to:
+
+1. Update `index.html` to match the new content (preserving design and styles).
+2. Regenerate `cv.pdf` from `index.html`.
 
 ## Web version
 
-Live at [danielberntson.github.io/cv](https://danielberntson.github.io/cv/). Push to `main` to update.
+Live at [danielberntson.github.io/cv](https://danielberntson.github.io/cv/). Push `index.html` to `main` to update.
 
-## Generating the PDF
+The same `index.html` serves both web and print — it's responsive on screen and snaps to A4 in print mode via `@media print`.
+
+## Regenerating the PDF
 
 ```bash
 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome \
   --headless --no-pdf-header-footer \
-  --print-to-pdf=mockup-1.pdf mockup-1.html
+  --print-to-pdf=cv.pdf index.html
 ```
